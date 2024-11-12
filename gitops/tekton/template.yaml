@@ -17,7 +17,9 @@ spec:
         generateName: simple-pipeline-run-
         labels:
           triggered-by: event-listener
+          debug: "true"
       spec:
+        serviceAccountName: pipeline
         pipelineRef:
           name: simple-pipeline
         params:

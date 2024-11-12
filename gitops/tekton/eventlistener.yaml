@@ -2,21 +2,31 @@ apiVersion: triggers.tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: github-mock-listener
+  annotations:
+    triggers.tekton.dev/debug: "true"
 spec:
-  serviceAccountName: tekton-trigger-sa
+  serviceAccountName: pipeline
   triggers:
     - name: github-mock-trigger
       interceptors:
         - ref:
+            kind: ClusterInterceptor
             name: "cel"
           params:
-            - name: "filter"
-              value: "body.message != ''"
             - name: "overlays"
               value:
                 - key: "timestamp"
                   expression: "string(parseTime('2006-01-02T15:04:05.999Z07:00', timestamp()))"
+                - key: "log_incoming"
+                  expression: "body"
+                - key: "log_message"
+                  expression: "body.message"
+                - key: "log_repo"
+                  expression: "body.repository.name"
+            - name: "log"
+              value: "true"
       bindings:
         - ref: github-mock-binding
+          kind: TriggerBinding
       template:
         ref: github-mock-template

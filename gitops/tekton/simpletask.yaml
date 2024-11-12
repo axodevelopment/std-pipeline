@@ -6,7 +6,7 @@ spec:
   params:
     - name: message
       type: string
-    - name: fake-repo
+    - name: repo-name
       type: string
     - name: timestamp
       type: string
@@ -17,7 +17,7 @@ spec:
         #!/bin/sh
         echo "=== Event Details ==="
         echo "Received message: $(params.message)"
-        echo "Repository name: $(params.fake-repo)"
+        echo "Repository name: $(params.repo-name)"
         echo "Event timestamp: $(params.timestamp)"
         echo "Current time: $(date)"
         echo "===================="

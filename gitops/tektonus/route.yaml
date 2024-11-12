@@ -1,0 +1,10 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: hello-listener
+spec:
+  to:
+    kind: Service
+    name: el-hello-listener
+  port:
+    targetPort: http-listener

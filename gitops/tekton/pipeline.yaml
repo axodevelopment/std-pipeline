@@ -17,7 +17,7 @@ spec:
       params:
         - name: message
           value: $(params.message)
-        - name: fake-repo
+        - name: repo-name
           value: $(params.repo-name)
         - name: timestamp
           value: $(params.event-timestamp)
