@@ -1,0 +1,23 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: simple-pipeline
+spec:
+  params:
+    - name: message
+      type: string
+    - name: repo-name
+      type: string
+    - name: event-timestamp
+      type: string
+  tasks:
+    - name: first-task
+      taskRef:
+        name: simple-print
+      params:
+        - name: message
+          value: $(params.message)
+        - name: fake-repo
+          value: $(params.repo-name)
+        - name: timestamp
+          value: $(params.event-timestamp)

@@ -14,6 +14,8 @@ func main() {
 	fmt.Println("App Starting...")
 	defer fmt.Println("App Ending ...")
 
+	fmt.Println("This is where i trigger workflow")
+
 	// from gin tutorial
 	router := gin.Default()
 

@@ -1,0 +1,10 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: el-github-mock-listener
+spec:
+  to:
+    kind: Service
+    name: el-github-mock-listener
+  port:
+    targetPort: http-listener

@@ -1,0 +1,12 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: github-mock-binding
+spec:
+  params:
+    - name: message
+      value: $(body.message)
+    - name: repository
+      value: $(body.repository.name)
+    - name: timestamp
+      value: $(extensions.timestamp)

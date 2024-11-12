@@ -1,0 +1,29 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: github-mock-template
+spec:
+  params:
+    - name: message
+      description: "Message from the incoming request"
+    - name: repository
+      description: "Repository name from the request"
+    - name: timestamp
+      description: "Timestamp when the event was received"
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: simple-pipeline-run-
+        labels:
+          triggered-by: event-listener
+      spec:
+        pipelineRef:
+          name: simple-pipeline
+        params:
+          - name: message
+            value: $(tt.params.message)
+          - name: repo-name
+            value: $(tt.params.repository)
+          - name: event-timestamp
+            value: $(tt.params.timestamp)

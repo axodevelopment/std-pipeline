@@ -1,0 +1,23 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: simple-print
+spec:
+  params:
+    - name: message
+      type: string
+    - name: fake-repo
+      type: string
+    - name: timestamp
+      type: string
+  steps:
+    - name: print-message
+      image: registry.access.redhat.com/ubi8/ubi-minimal:latest
+      script: |
+        #!/bin/sh
+        echo "=== Event Details ==="
+        echo "Received message: $(params.message)"
+        echo "Repository name: $(params.fake-repo)"
+        echo "Event timestamp: $(params.timestamp)"
+        echo "Current time: $(date)"
+        echo "===================="
