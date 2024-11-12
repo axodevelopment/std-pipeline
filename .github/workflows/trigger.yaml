@@ -1,0 +1,15 @@
+name: Trigger Tekton Pipeline
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  trigger-tekton:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Tekton Pipeline
+        run: |
+          curl -X POST \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${{ secrets.TEKTON_TRIGGER_TOKEN }}" \
+            https://www.google.com
