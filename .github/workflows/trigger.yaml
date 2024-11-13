@@ -1,7 +1,11 @@
 name: Trigger Tekton Pipeline
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - 'feature/**'
+    paths:
+      - 'app/**'
 
 jobs:
   trigger-tekton:
