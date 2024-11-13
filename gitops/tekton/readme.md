@@ -10,3 +10,6 @@ The above call is to make it zsh compliant.  In short we get the el-github-mock-
 
 # logging
 oc logs -l eventlistener=github-mock-listener -n pipelines -f
+
+# test
+this is a test to see if my workflow is working correctly...
