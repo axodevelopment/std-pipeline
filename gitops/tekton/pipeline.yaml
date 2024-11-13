@@ -8,16 +8,12 @@ spec:
       type: string
     - name: repo-name
       type: string
-    - name: event-timestamp
-      type: string
   tasks:
     - name: first-task
       taskRef:
         name: simple-print
       params:
-        - name: message
-          value: $(params.message)
-        - name: repo-name
-          value: $(params.repo-name)
-        - name: timestamp
-          value: $(params.event-timestamp)
+      - name: message
+        value: $(params.message)
+      - name: repo-name
+        value: $(params.repo-name)

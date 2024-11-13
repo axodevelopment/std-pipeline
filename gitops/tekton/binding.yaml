@@ -8,5 +8,3 @@ spec:
       value: $(body.message)
     - name: repository
       value: $(body.repository.name)
-    - name: timestamp
-      value: $(extensions.timestamp)

@@ -8,16 +8,13 @@ spec:
       type: string
     - name: repo-name
       type: string
-    - name: timestamp
-      type: string
   steps:
     - name: print-message
-      image: registry.access.redhat.com/ubi8/ubi-minimal:latest
+      image: alpine
       script: |
         #!/bin/sh
         echo "=== Event Details ==="
         echo "Received message: $(params.message)"
         echo "Repository name: $(params.repo-name)"
-        echo "Event timestamp: $(params.timestamp)"
         echo "Current time: $(date)"
         echo "===================="
